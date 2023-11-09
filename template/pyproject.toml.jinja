@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm", "wheel"]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+
+[project]
+name = "parma-mining-{{module_name}}"
+description = ""
+readme = "README.md"
+dynamic = ["version"]
+authors = [
+  {name = "Robin Holzinger", email = "robin.holzinger@tum.de"},
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+]
+requires-python = ">=3.11"
+
+[project.urls]
+repository = "https://github.com/la-famiglia-jst2324/parma-mining-{{module_name}}"
+
+[tool.setuptools.packages.find]
+include = ["parma_mining.*"]
+namespaces = false
+
+[project.scripts]
+
+[tool.black]
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.ruff]
+line-length = 88
+select = ["F", "E", "W", "I", "N", "UP", "D", "PL"]
+target-version = "py311"
+
+[tool.mypy]
+python_version = '3.11'
+ignore_missing_imports = true
+no_implicit_optional = true
+check_untyped_defs = true
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.docformatter]
+black = true
+
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib --cov='parma_mining' --cov-report xml --color=yes"

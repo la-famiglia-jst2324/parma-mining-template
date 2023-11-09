@@ -1,0 +1,8 @@
+# configuration
+_subdirectory: template
+
+
+# questions
+module_name:
+    type: str
+    help: Data sourcing module name without spaces, hyphens, or underscores. Same as repository name without `parma-mining-` prefix.

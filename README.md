@@ -16,7 +16,7 @@ the following steps after cloning it locally:
 2. Run copier
 
     ```bash
-    copier copy url git@github.com:la-famiglia-jst2324/parma-mining-template.git --trust
+    copier copy git@github.com:la-famiglia-jst2324/parma-mining-template.git . --trust
     ```
 
 3. Optional: Update project with a new copier template version.

@@ -573,6 +573,7 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/vim,node,linux,macos,windows,pycharm+all,webstorm+all,visualstudiocode,direnv,python
 
 # [CUSTOMIZATIONS]
+.vscode
 .secrets/
 .image.name
 **/.terraform/

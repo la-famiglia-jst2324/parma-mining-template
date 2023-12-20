@@ -14,9 +14,6 @@ defaults:
   run:
     shell: bash -el {0}
 
-env:
-  TF_VAR_FIREBASE_ADMIN_SDK: ${{ github.event_name == 'release' && secrets.PROD_FIREBASE_ADMIN_SDK || secrets.STAGING_FIREBASE_ADMIN_SDK}}
-
 jobs:
   deploy:
     name: Deploy - ${{ matrix.DEPLOYMENT_ENV }}
@@ -35,7 +32,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Configure gcloud CLI
-        uses: google-github-actions/setup-gcloud@7c7fdb013a8b6110c2be651135a704ef79c91e5f
+        uses: google-github-actions/setup-gcloud@f14c440264ed3dac7a297b8bae833f29aba92896
         with:
           version: "416.0.0"
           service_account_email: ${{ secrets.GCP_SA_EMAIL }}

@@ -14,9 +14,6 @@ defaults:
   run:
     shell: bash -el {0}
 
-env:
-  TF_VAR_FIREBASE_ADMIN_SDK: ${{ github.event_name == 'release' && secrets.PROD_FIREBASE_ADMIN_SDK || secrets.STAGING_FIREBASE_ADMIN_SDK}}
-
 jobs:
   deploy:
     name: Deploy - ${{ matrix.DEPLOYMENT_ENV }}

@@ -9,8 +9,6 @@ WORKDIR /app
 
 COPY --chown=$MAMBA_USER:$MAMBA_USER parma_mining /app/parma_mining
 
-ENV FIREBASE_ADMIN_SDK=$FIREBASE_ADMIN_SDK
-
 EXPOSE 8080
 
 ENTRYPOINT ["/usr/local/bin/_entrypoint.sh"]

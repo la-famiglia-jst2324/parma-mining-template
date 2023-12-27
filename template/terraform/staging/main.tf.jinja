@@ -33,4 +33,5 @@ module "main" {
   env              = "staging"
   project          = local.project
   region           = local.region
+  ANALYTICS_BASE_URL = var.ANALYTICS_BASE_URL
 }

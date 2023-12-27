@@ -14,6 +14,9 @@ defaults:
   run:
     shell: bash -el {0}
 
+env:
+  TF_VAR_ANALYTICS_BASE_URL: ${{ github.event_name == 'release' && vars.PROD_ANALYTICS_BASE_URL || vars.STAGING_ANALYTICS_BASE_URL}}
+
 jobs:
   deploy:
     name: Deploy - ${{ matrix.DEPLOYMENT_ENV }}

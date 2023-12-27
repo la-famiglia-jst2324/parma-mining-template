@@ -12,3 +12,8 @@ variable "region" {
   description = "Google Cloud Region"
   type        = string
 }
+
+variable "ANALYTICS_BASE_URL" {
+  description = "value"
+  type        = string
+}

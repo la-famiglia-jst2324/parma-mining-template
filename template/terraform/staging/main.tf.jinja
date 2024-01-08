@@ -35,5 +35,5 @@ module "main" {
   region           = local.region
   ANALYTICS_BASE_URL = var.ANALYTICS_BASE_URL
 
-  SHARED_SECRET_KEY = var.SHARED_SECRET_KEY
+  PARMA_SHARED_SECRET_KEY = var.PARMA_SHARED_SECRET_KEY
 }

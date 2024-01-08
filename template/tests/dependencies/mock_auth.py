@@ -17,12 +17,9 @@ def mock_authenticate(
     """Authenticate the incoming request using the JWT in the Authorization header.
 
     Args:
-        authorization (str): The Authorization header containing the JWT.
+        authorization: The Authorization header containing the JWT.
 
     Returns:
-        str: Dummy token for testing purposes.
-
-    Raises:
-        HTTPException: If the JWT is invalid or expired.
+        Dummy token for testing purposes.
     """
     return "dummytoken"

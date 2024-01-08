@@ -23,10 +23,11 @@ class JWTHandler:
         """Verify a JWT using the shared secret key.
 
         Args:
-            token (str): The JWT token to verify.
+            token: The JWT token to verify.
 
         Returns:
-            bool: True if the verification is successful, False otherwise.
+            True if the verification is successful.
+            False otherwise.
         """
         try:
             jwt.decode(

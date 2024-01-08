@@ -5,7 +5,7 @@ variable "ANALYTICS_BASE_URL" {
 
 /* ------------------------ Analytics and Sourcing Auth Flow ------------------------ */
 
-variable "SHARED_SECRET_KEY" {
+variable "PARMA_SHARED_SECRET_KEY" {
   description = "Shared secret key for the analytics and sourcing auth flow"
   type        = string
   sensitive   = true

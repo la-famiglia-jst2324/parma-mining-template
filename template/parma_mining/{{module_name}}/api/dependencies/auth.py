@@ -20,15 +20,16 @@ def authenticate(
     """Authenticate the incoming request using the JWT in the Authorization header.
 
     Args:
-        authorization (str): The Authorization header containing the JWT.
+        authorization: The Authorization header containing the JWT.
 
     Returns:
-        str: Extracted token from the Authorization header.
-                Whenever a request is needed to be made to the Analytics Backend
-                This token can be used to authenticate the request.
+        Extracted token from the Authorization header.
+        (Whenever a request is needed to be made to the Analytics Backend,
+        This token can be used to authenticate the request.)
 
     Raises:
-        HTTPException: If the JWT is invalid or expired.
+        HTTPException: If the JWT is invalid.
+        HTTPException: If the JWT is expired.
         HTTPException: If the Authorization header is missing.
     """
     if authorization is None:

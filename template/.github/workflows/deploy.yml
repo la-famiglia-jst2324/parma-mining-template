@@ -17,6 +17,9 @@ defaults:
 env:
   TF_VAR_ANALYTICS_BASE_URL: ${{ github.event_name == 'release' && vars.PROD_ANALYTICS_BASE_URL || vars.STAGING_ANALYTICS_BASE_URL}}
 
+  # Analytics and Sourcing (AS) Auth Flow
+  TF_VAR_SHARED_SECRET_KEY: ${{ github.event_name == 'release' && secrets.PROD_AS_SHARED_SECRET_KEY || secrets.STAGING_AS_SHARED_SECRET_KEY}}
+
 jobs:
   deploy:
     name: Deploy - ${{ matrix.DEPLOYMENT_ENV }}

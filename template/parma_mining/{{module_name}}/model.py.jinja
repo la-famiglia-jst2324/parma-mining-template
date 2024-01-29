@@ -1,0 +1,63 @@
+"""Model for the {{module_name}} data."""
+import json
+from datetime import datetime
+
+from pydantic import BaseModel
+
+
+## Custom models for {{module_name}} 
+
+class CompanyModel(BaseModel):
+    name: str | None = None
+
+
+
+## Common models for all mining modules
+
+class CompaniesRequest(BaseModel):
+    """Companies request model for {{module_name}} data."""
+
+    task_id: int
+    companies: dict[str, dict[str, list[str]]]
+
+
+class ResponseModel(BaseModel):
+    """Response model for {{module_name}} data."""
+
+    source_name: str
+    company_id: str
+    raw_data: CompanyModel
+
+
+class DiscoveryRequest(BaseModel):
+    """Request model for the discovery endpoint."""
+
+    company_id: str
+    name: str
+
+
+class DiscoveryResponse(BaseModel):
+    """Define the output model for the discovery endpoint."""
+
+    handles: list[str] = []
+
+
+class FinalDiscoveryResponse(BaseModel):
+    """Define the final discovery response model."""
+
+    identifiers: dict[str, DiscoveryResponse]
+    validity: datetime
+
+
+class ErrorInfoModel(BaseModel):
+    """Error info for the crawling_finished endpoint."""
+
+    error_type: str
+    error_description: str | None
+
+
+class CrawlingFinishedInputModel(BaseModel):
+    """Internal base model for the crawling_finished endpoints."""
+
+    task_id: int
+    errors: dict[str, ErrorInfoModel] | None = None

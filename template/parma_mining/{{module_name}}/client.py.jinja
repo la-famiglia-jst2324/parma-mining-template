@@ -1,0 +1,27 @@
+"""{{module_name}} client module."""
+import logging
+
+logger = logging.getLogger(__name__)
+
+from parma_mining.{{module_name}}.model import (
+    DiscoveryResponse,
+    CompanyModel,
+)
+
+class {{module_name}}Client:
+    """{{module_name}}Client class is used to fetch data from {{module_name}}."""
+
+    def __init__(self):
+        """Initialize the {{module_name}} client."""
+
+
+    def get_organization_details(self, org_name: str) -> CompanyModel:
+        """Implement business logic for crawling company and return custom CompanyModel """
+
+        return CompanyModel(name = "DummyCompany")
+
+
+    def search_organizations(self, query: str) -> DiscoveryResponse:
+        """Implement business logic for searching handles and return custom CompanyModel """
+
+        return DiscoveryResponse(handles = ["DummyCompanyHandle"])

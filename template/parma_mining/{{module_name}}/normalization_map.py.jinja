@@ -1,0 +1,14 @@
+"""Normalization map for {{module_name}} data."""
+
+
+class {{module_name}}NormalizationMap:
+    """Normalization map for {{module_name}} data."""
+
+    map_json = {
+        "Source": "{{module_name}}",
+        "Mappings": [],
+    }
+
+    def get_normalization_map(self) -> dict:
+        """Return the normalization map."""
+        return self.map_json

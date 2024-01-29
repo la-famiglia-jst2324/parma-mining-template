@@ -1,0 +1,20 @@
+from unittest.mock import MagicMock, patch
+
+import pytest
+
+from parma_mining.{{module_name}}.client import {{module_name}}Client
+from parma_mining.{{module_name}}.model import DiscoveryResponse, CompanyModel
+from parma_mining.mining_common.exceptions import ClientError, CrawlingError
+
+
+@pytest.fixture
+def {{module_name}}_client():
+    return {{module_name}}Client()
+
+
+def test_get_organization_details_success({{module_name}}_client):
+
+    org_details = {{module_name}}_client.get_organization_details("DummyCompany")
+    assert org_details.name == "DummyCompany"
+    assert isinstance(org_details, CompanyModel)
+

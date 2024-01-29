@@ -27,9 +27,9 @@ logger = logging.getLogger(__name__)
 
 @pytest.fixture
 def mock_{{module_name}}_client(mocker) -> MagicMock:
-    """Mocking the testmoduleClient's method to avoid API calls during testing."""
+    """Mocking the Client{{module_name}}'s method to avoid API calls during testing."""
     mock = mocker.patch(
-        "parma_mining.{{module_name}}.api.main.{{module_name}}Client.get_organization_details"
+        "parma_mining.{{module_name}}.api.main.Client{{module_name}}.get_organization_details"
     )
     mock.return_value = {"name": "TestOrg"}
     return mock
@@ -71,7 +71,7 @@ def test_get_organization_details(
 
 def test_get_organization_details_bad_request(mocker, client: TestClient):
     mocker.patch(
-        "parma_mining.{{module_name}}.api.main.{{module_name}}Client.get_organization_details",
+        "parma_mining.{{module_name}}.api.main.Client{{module_name}}.get_organization_details",
         side_effect=HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Organization not found"
         ),

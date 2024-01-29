@@ -24,9 +24,9 @@ def client():
 
 @pytest.fixture
 def mock_{{module_name}}_client(mocker) -> MagicMock:
-    """Mocking {{module_name}}Client's search_organizations method."""
+    """Mocking Client{{module_name}}'s search_organizations method."""
     mock = mocker.patch(
-        "parma_mining.{{module_name}}.api.main.{{module_name}}Client.search_organizations"
+        "parma_mining.{{module_name}}.api.main.Client{{module_name}}.search_organizations"
     )
     mock.return_value = DiscoveryResponse(handles=["mock_handle"]).model_dump()
     return mock

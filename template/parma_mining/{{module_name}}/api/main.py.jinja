@@ -7,11 +7,6 @@ from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, status
 
-from parma_mining.mining_common.exceptions import (
-    AnalyticsError,
-    ClientInvalidBodyError,
-    CrawlingError,
-)
 from parma_mining.{{module_name}}.analytics_client import AnalyticsClient
 from parma_mining.{{module_name}}.api.dependencies.auth import authenticate
 from parma_mining.{{module_name}}.client import Client{{module_name}}
@@ -25,6 +20,11 @@ from parma_mining.{{module_name}}.model import (
     ResponseModel,
 )
 from parma_mining.{{module_name}}.normalization_map import NormalizationMap{{module_name}}
+from parma_mining.mining_common.exceptions import (
+    AnalyticsError,
+    ClientInvalidBodyError,
+    CrawlingError,
+)
 
 env = os.getenv("DEPLOYMENT_ENV", "local")
 

@@ -7,13 +7,15 @@ from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, status
 
-from parma_mining.{{module_name}}.api.dependencies.auth import authenticate
+from parma_mining.mining_common.exceptions import (
+    AnalyticsError,
+    ClientInvalidBodyError,
+    CrawlingError,
+)
 from parma_mining.{{module_name}}.analytics_client import AnalyticsClient
-from parma_mining.{{module_name}}.client import {{module_name}}Client
-from parma_mining.{{module_name}}.normalization_map import {{module_name}}NormalizationMap
+from parma_mining.{{module_name}}.api.dependencies.auth import authenticate
+from parma_mining.{{module_name}}.client import Client{{module_name}}
 from parma_mining.{{module_name}}.helper import collect_errors
-
-
 from parma_mining.{{module_name}}.model import (
     CompaniesRequest,
     CrawlingFinishedInputModel,
@@ -22,12 +24,7 @@ from parma_mining.{{module_name}}.model import (
     FinalDiscoveryResponse,
     ResponseModel,
 )
-
-from parma_mining.mining_common.exceptions import (
-    AnalyticsError,
-    ClientInvalidBodyError,
-    CrawlingError,
-)
+from parma_mining.{{module_name}}.normalization_map import NormalizationMap{{module_name}}
 
 env = os.getenv("DEPLOYMENT_ENV", "local")
 
@@ -45,15 +42,17 @@ load_dotenv()
 
 app = FastAPI()
 
-{{module_name}}_client = {{module_name}}Client()
+{{module_name}}_client = Client{{module_name}}()
 analytics_client = AnalyticsClient()
-normalization = {{module_name}}NormalizationMap()
+normalization = NormalizationMap{{module_name}}()
+
 
 @app.get("/", status_code=status.HTTP_200_OK)
 def root():
     """Root endpoint for the API."""
     logger.debug("Root endpoint called")
     return {"welcome": "at parma-mining-{{module_name}}"}
+
 
 @app.get("/initialize", status_code=status.HTTP_200_OK)
 def initialize(source_id: int, token: str = Depends(authenticate)) -> str:
@@ -72,6 +71,7 @@ def initialize(source_id: int, token: str = Depends(authenticate)) -> str:
     results["normalization_map"] = str(normalization_map)
     return json.dumps(results)
 
+
 @app.post(
     "/companies",
     status_code=status.HTTP_200_OK,
@@ -85,10 +85,12 @@ def get_organization_details(
         for data_type, handles in company_data.items():
             for handle in handles:
                 try:
-                    # Return crawled company here 
+                    # Return crawled company here
                     org_details = {{module_name}}_client.get_organization_details(handle)
                 except CrawlingError as e:
-                    logger.error(f"Can't fetch company details from {{module_name}}. Error: {e}")
+                    logger.error(
+                        f"Can't fetch company details from {{module_name}}. Error: {e}"
+                    )
                     collect_errors(company_id, errors, e)
                     continue
 
@@ -143,4 +145,3 @@ def discover_companies(
     valid_until = current_date + timedelta(days=180)
 
     return FinalDiscoveryResponse(identifiers=response_data, validity=valid_until)
-

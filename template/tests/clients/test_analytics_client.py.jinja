@@ -1,11 +1,11 @@
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import httpx
 import pytest
 
+from parma_mining.mining_common.const import HTTP_200, HTTP_500
 from parma_mining.{{module_name}}.analytics_client import AnalyticsClient
 from parma_mining.{{module_name}}.model import CompanyModel, ResponseModel
-from parma_mining.mining_common.const import HTTP_200, HTTP_500
 
 TOKEN = "mocked_token"
 
@@ -13,7 +13,6 @@ TOKEN = "mocked_token"
 @pytest.fixture
 def analytics_client():
     return AnalyticsClient()
-
 
 
 @pytest.fixture

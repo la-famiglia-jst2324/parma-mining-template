@@ -33,9 +33,7 @@ def mock_{{module_name}}_client(mocker) -> MagicMock:
 
 
 # Test for successful discovery
-def test_discover_endpoint_success(
-    client: TestClient, mock_{{module_name}}_client: MagicMock
-):
+def test_discover_endpoint_success(client: TestClient, mock_{{module_name}}_client: MagicMock):
     request_data = [
         DiscoveryRequest(company_id="123", name="TestCompany").model_dump(),
         DiscoveryRequest(company_id="456", name="AnotherCompany").model_dump(),
@@ -64,7 +62,7 @@ def test_discover_endpoint_invalid_format(client: TestClient):
 
 
 def test_discover_non_existing_company(
-    client: TestClient, mock_{{module_name}}_client: MagicMock
+        client: TestClient, mock_{{module_name}}_client: MagicMock
 ):
     mock_{{module_name}}_client.return_value = {}
 
@@ -79,7 +77,7 @@ def test_discover_non_existing_company(
 
 
 def test_discover_endpoint_with_{{module_name}}_client_error(
-    client: TestClient, mock_{{module_name}}_client: MagicMock
+        client: TestClient, mock_{{module_name}}_client: MagicMock
 ):
     mock_{{module_name}}_client.side_effect = Exception("Mocked Exception")
     request_data = [DiscoveryRequest(company_id="123", name="TestCompany").model_dump()]

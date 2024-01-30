@@ -1,0 +1,15 @@
+import pytest
+
+from parma_mining.{{module_name}}.client import Client{{module_name}}
+from parma_mining.{{module_name}}.model import CompanyModel
+
+
+@pytest.fixture
+def {{module_name}}_client():
+    return Client{{module_name}}()
+
+
+def test_get_organization_details_success({{module_name}}_client):
+    org_details = {{module_name}}_client.get_organization_details("DummyCompany")
+    assert org_details.name == "DummyCompany"
+    assert isinstance(org_details, CompanyModel)

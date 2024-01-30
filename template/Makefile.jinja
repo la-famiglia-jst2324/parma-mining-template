@@ -20,7 +20,8 @@ dev:
 	uvicorn parma_mining.{{module_name}}.api:app --reload
 
 test:
-	pytest tests/
+	PYTHONPATH=. pytest tests/
+	coverage html && open htmlcov/index.html
 
 purge-db:
 	# TODO

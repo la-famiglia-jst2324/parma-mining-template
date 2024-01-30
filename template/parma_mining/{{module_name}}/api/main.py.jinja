@@ -77,7 +77,7 @@ def initialize(source_id: int, token: str = Depends(authenticate)) -> str:
     status_code=status.HTTP_200_OK,
 )
 def get_organization_details(
-    body: CompaniesRequest, token: str = Depends(authenticate)
+        body: CompaniesRequest, token: str = Depends(authenticate)
 ):
     """Endpoint to get detailed information about a dict of organizations."""
     errors: dict[str, ErrorInfoModel] = {}
@@ -124,7 +124,7 @@ def get_organization_details(
     status_code=status.HTTP_200_OK,
 )
 def discover_companies(
-    request: list[DiscoveryRequest], token: str = Depends(authenticate)
+        request: list[DiscoveryRequest], token: str = Depends(authenticate)
 ):
     """Endpoint to discover organizations based on provided names."""
     if not request:

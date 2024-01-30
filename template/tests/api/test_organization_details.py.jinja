@@ -49,9 +49,9 @@ def mock_analytics_client(mocker) -> MagicMock:
 
 
 def test_get_organization_details(
-    mock_{{module_name}}_client: MagicMock,
-    mock_analytics_client: MagicMock,
-    client: TestClient,
+        mock_{{module_name}}_client: MagicMock,
+        mock_analytics_client: MagicMock,
+        client: TestClient,
 ):
     payload = {
         "task_id": 123,

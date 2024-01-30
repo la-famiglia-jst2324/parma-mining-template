@@ -13,9 +13,9 @@ The following steps will get you started with the project.
 
 1. Pre-requisites: to be able to contribute to JST in this repository, make sure to comply with the following prerequisites.
 
-   - Configure GitHub via an ssh key. Key based authenticated is highly encouraged. See [GitHub Docs](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) for more information.
-   - Please make sure to have an GPG key configured for GitHub. See [GitHub Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account) for more information.
-   - Install **micromamba**, a conda environment management package manager, as described [here](https://mamba.readthedocs.io/en/latest/micromamba-installation.html). Alternatively conda or mamba installations should also work, but are highly discouraged because of their slow performance.
+    - Configure GitHub via an ssh key. Key based authenticated is highly encouraged. See [GitHub Docs](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) for more information.
+    - Please make sure to have an GPG key configured for GitHub. See [GitHub Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account) for more information.
+    - Install **micromamba**, a conda environment management package manager, as described [here](https://mamba.readthedocs.io/en/latest/micromamba-installation.html). Alternatively conda or mamba installations should also work, but are highly discouraged because of their slow performance.
 
 2. **Clone the repository**
 
@@ -100,7 +100,6 @@ Core libraries that this project uses:
 - [Pytest](https://docs.pytest.org/en/6.2.x/): The pytest framework makes it easy to write small tests, yet scales to support complex functional testing for applications and libraries.
 - [Python-Jose](https://python-jose.readthedocs.io/en/latest/): The JavaScript Object Signing and Encryption (JOSE) technologies collectively can be used to encrypt and/or sign content using a variety of algorithms.
 - [HTTPX](https://www.python-httpx.org/): HTTPX is a fully featured HTTP client for Python 3, which provides sync and async APIs, and support for both HTTP/1.1 and HTTP/2.
-
 
 ## Deployment
 
@@ -190,22 +189,21 @@ This endpoint retrieves detailed information about a list of companies using the
 HTTP status OK
 
 ## Next Steps
+
 The files required for the module were created by Copier using the template repository. The `main.py` file containing the endpoints and making up the module API is completely ready, just like the `AnalyticsClient` that is responsible for communicating with the analytics backend. General information about the parts that need to be updated and expanded in the module is given below, step by step.
 
 **1. Update Data Model:**
 
 In the `models.py`, there are models common to all modules. There is no need to make changes to these common models. However, the `CompanyModel` must be updated by the developer in accordance with the data format of the data source. Extra models can also be added if the data is nested.
 
-
 **2. Prepare the Normalization Map for the Data Model:**
 
 The `map_json` variable in the `normalization_map.py` should be updated in accordance with the prepared Company model. This map is sent to the analytics backend when the module is initialized and allows the data to be normalized.
 
-
-
 **3. Implement Functions of the Client**
 
 The functions in the `client.py` must be edited. This class is where the main logic is implemented, and the functions may vary depending on the module.
+
 - `init():` The constructor of the module, necessary class attributes are set in this function.
 - `get_organization_details():` This function takes a handle related to a company as a parameter. This handle can be a url or a name. It collects the details about this company from the data source, adapts them to the module's data format and returns a CompanyModel object.
 - `search_organizations():` This function takes the company name as its parameter. It returns entities related to this company from the data source. An example of these entities may be the URL of the company's profile in the data source. The return value of this function is usually used at the /companies endpoint.
@@ -215,7 +213,6 @@ All these functions need to be implemented with respect the data sourcing logic 
 **4. Configure the Unit Tests**
 
 After the necessary changes are made, unit tests should also be updated in line with the changes made.
-
 
 ## Disclaimer
 
